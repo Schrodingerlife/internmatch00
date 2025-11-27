@@ -1,21 +1,34 @@
 import React from 'react';
-import { Bell, Menu } from 'lucide-react';
+import { Bell, Menu, Home } from 'lucide-react';
+import { AppView } from '../types';
 
 interface HeaderProps {
   title?: string;
+  onToggleMenu: () => void;
+  onToggleNotifications: () => void;
+  onNavigate: (view: AppView) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ title = "InternMatch" }) => {
+const Header: React.FC<HeaderProps> = ({ title = "InternMatch", onToggleMenu, onToggleNotifications, onNavigate }) => {
   return (
-    <header className="bg-primary text-white p-4 sticky top-0 z-50 shadow-md flex justify-between items-center">
-      <button className="p-1 rounded hover:bg-indigo-700 transition-colors">
-        <Menu size={24} />
+    <header className="bg-white/80 backdrop-blur-md text-textDark p-5 sticky top-0 z-40 shadow-sm flex justify-between items-center border-b border-gray-100">
+      <button onClick={onToggleMenu} className="p-2 rounded-full hover:bg-gray-100 text-gray-600 transition-colors">
+        <Menu size={24} strokeWidth={2} />
       </button>
-      <h1 className="text-lg font-bold tracking-wide">{title}</h1>
-      <button className="p-1 rounded hover:bg-indigo-700 transition-colors relative">
-        <Bell size={24} />
-        <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-accent ring-2 ring-primary transform translate-x-1/4 -translate-y-1/4"></span>
-      </button>
+      <div className="flex items-center gap-2">
+        <h1 className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          {title}
+        </h1>
+      </div>
+      <div className="flex items-center gap-1">
+        <button onClick={() => onNavigate('home')} className="p-2 rounded-full hover:bg-gray-100 text-gray-600 transition-colors">
+          <Home size={24} strokeWidth={2} />
+        </button>
+        <button onClick={onToggleNotifications} className="p-2 rounded-full hover:bg-gray-100 text-gray-600 transition-colors relative">
+          <Bell size={24} strokeWidth={2} />
+          <span className="absolute top-1.5 right-2 block h-2.5 w-2.5 rounded-full bg-error ring-2 ring-white"></span>
+        </button>
+      </div>
     </header>
   );
 };

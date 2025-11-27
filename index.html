@@ -10,24 +10,36 @@
         theme: {
           extend: {
             colors: {
-              primary: '#3F51B5', // Indigo
-              secondary: '#4CAF50', // Green
-              accent: '#FFC107', // Amber
-              neutral: '#F5F5F5',
-              textDark: '#212121',
-              textLight: '#757575',
-              error: '#E91E63',
+              primary: '#6366f1', // Indigo-500
+              primaryDark: '#4f46e5', // Indigo-600
+              secondary: '#10b981', // Emerald-500
+              accent: '#f59e0b', // Amber-500
+              neutral: '#f8fafc', // Slate-50
+              surface: '#ffffff',
+              textDark: '#1e293b', // Slate-800
+              textLight: '#64748b', // Slate-500
+              error: '#ef4444', // Red-500
             },
             fontFamily: {
-              sans: ['Roboto', 'sans-serif'],
+              sans: ['Outfit', 'sans-serif'],
+            },
+            boxShadow: {
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+              'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
             }
           }
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-      body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; }
+      body { 
+        font-family: 'Outfit', sans-serif; 
+        background-color: #eef2f6;
+        color: #1e293b;
+      }
       /* Hide scrollbar for clean mobile look */
       .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -35,6 +47,12 @@
       .no-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
+      }
+      .glass-morphism {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
       }
     </style>
   <script type="importmap">
@@ -49,7 +67,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>

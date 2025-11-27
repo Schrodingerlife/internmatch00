@@ -10,33 +10,40 @@ export enum VacancyStatus {
 }
 
 export interface Company {
-  id: string;
+  id?: string;
   name: string;
   logoUrl: string;
   description: string;
-  location: string;
-  glassdoorRating: number;
+  location?: string;
+  website?: string;
+  glassdoorRating?: number;
 }
 
 export interface MatchAnalysis {
+  score?: number;
   positives: string[];
   improvements: string[];
 }
 
 export interface Vacancy {
   id: string;
-  company: Company;
   title: string;
-  workMode: 'Presencial' | 'Híbrido' | 'Remoto';
+  company: Company;
+  workMode?: string;
+  location?: string;
+  salary?: string;
+  salaryRange?: string;
+  description: string;
+  requirements?: string[];
   mandatoryRequirements: string[];
   desirableRequirements: string[];
   benefits: string[];
-  salaryRange: string;
-  description: string;
-  status: VacancyStatus;
-  matchPercentage: number;
-  postedDate: string;
-  matchAnalysis: MatchAnalysis;
+  status?: VacancyStatus;
+  matchPercentage?: number;
+  postedDate?: string;
+  postedAt?: string;
+  applyLink?: string;
+  matchAnalysis?: MatchAnalysis;
 }
 
 export interface UserProfile {
@@ -47,9 +54,10 @@ export interface UserProfile {
   semester: number;
   skills: string[];
   email: string;
+  bio?: string; // Added for better matching context
 }
 
-export type AppView = 'home' | 'match' | 'detail' | 'dashboard' | 'profile' | 'saved';
+export type AppView = 'home' | 'match' | 'detail' | 'dashboard' | 'saved' | 'profile';
 
 export interface GeminiChatMessage {
   role: 'user' | 'model';
